@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Build Your Costs — Break-even Calculator</title>
+    <link rel="stylesheet" href="costs.css" />
+</head>
+
+<body>
+    <a class="skip-link" href="#app">Skip to calculator</a>
+
+    <main id="app" class="app" role="main">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-row">
+                    <img class="logo" src="logo-without.svg" alt="Program logo" />
+                    <div>
+                        <span class="badge" aria-hidden="true">Day 3 • Lesson 4</span>
+                        <h1 class="title">Build Your Costs</h1>
+                        <p class="subtitle">Select your costs, then calculate how many units you must sell to break even.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status">
+                <div class="total-pill" aria-label="Running total">
+                    <span class="total-label">Total Costs</span>
+                    <span class="total-value" id="totalValue">₦0</span>
+                </div>
+
+                <label class="toggle">
+                    <input id="soundToggle" type="checkbox" />
+                    <span>Sound</span>
+                </label>
+            </div>
+        </header>
+
+        <p id="srLive" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+
+        <!-- INTRO -->
+        <section id="screenIntro" class="card screen is-active" aria-labelledby="introHeading">
+            <h2 id="introHeading" class="card-title">Choose a version</h2>
+            <p class="help">
+                Pick <strong>Rice</strong> or <strong>Fish</strong> costs. Tap a cost to add it. Tap again to remove it.
+            </p>
+
+            <div class="choice-row" role="group" aria-label="Choose cost version">
+                <button id="riceBtn" class="btn btn-primary" type="button">Rice Farming Costs</button>
+                <button id="fishBtn" class="btn btn-secondary" type="button">Fish Farming Costs</button>
+            </div>
+
+            <ul class="bullets">
+                <li>Running total updates instantly.</li>
+                <li>Then enter selling price per unit to calculate break-even units.</li>
+                <li>You can download/print a summary as PDF.</li>
+            </ul>
+        </section>
+
+        <!-- SELECT COSTS -->
+        <section id="screenSelect" class="card screen" aria-labelledby="selectHeading">
+            <div class="screen-head">
+                <h2 id="selectHeading" class="card-title">
+                    <span id="versionLabel">Rice Farming Costs</span>
+                </h2>
+                <button id="resetBtn" class="btn btn-ghost" type="button">Restart</button>
+            </div>
+
+            <p class="help">
+                Tap the cards that apply to your farm.
+            </p>
+
+            <div id="costGrid" class="cost-grid" aria-label="Cost items">
+                <!-- injected -->
+            </div>
+
+            <div class="actions">
+                <button id="calcBtn" class="btn btn-primary" type="button">
+                    Calculate Break-Even
+                </button>
+            </div>
+        </section>
+
+        <!-- BREAK-EVEN -->
+        <section id="screenCalc" class="card screen" aria-labelledby="calcHeading">
+            <h2 id="calcHeading" class="card-title">Break-even Calculator</h2>
+
+            <div class="calc-row">
+                <label class="field">
+                    <span class="field-label">What will you sell each unit for? (₦)</span>
+                    <input id="priceInput" class="field-input" inputmode="numeric" autocomplete="off"
+                           placeholder="e.g., 1500" />
+                    <span class="field-hint">Enter a number (no commas). We’ll format it.</span>
+                </label>
+
+                <button id="runCalcBtn" class="btn btn-primary" type="button">Calculate</button>
+            </div>
+
+            <div id="resultBox" class="result-box" aria-live="polite" aria-atomic="true">
+                <div class="result-title" id="resultTitle">Ready when you are.</div>
+                <div class="result-text" id="resultText">
+                    Enter your selling price to see the break-even units.
+                </div>
+
+                <div class="bar-wrap" aria-label="Break-even bar">
+                    <div class="bar">
+                        <div class="bar-fill" id="barFill"></div>
+                        <div class="bar-marker" id="barMarker" aria-hidden="true"></div>
+                    </div>
+                    <div class="bar-legend">
+                        <span>Costs</span>
+                        <span>Profit zone →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="tryNumbersBtn" class="btn btn-secondary" type="button">Try Different Numbers</button>
+                <button id="downloadBtn" class="btn btn-primary" type="button">Download Summary</button>
+
+                <a id="continueBtn" class="btn btn-primary" href="canvas.html" role="button" style="display:none;">
+                    Continue
+                </a>
+            </div>
+
+            <!-- Printable summary -->
+            <section id="printArea" class="print-area" aria-hidden="true">
+                <h2>Build Your Costs — Summary</h2>
+                <p><strong>Version:</strong> <span id="printVersion"></span></p>
+                <p><strong>Total Costs:</strong> <span id="printTotal"></span></p>
+                <p><strong>Selling Price per Unit:</strong> <span id="printPrice"></span></p>
+                <p><strong>Break-even Units:</strong> <span id="printUnits"></span></p>
+                <h3>Selected Costs</h3>
+                <ul id="printList"></ul>
+                <p style="margin-top:16px;"><em>After break-even, every extra unit is PROFIT.</em></p>
+            </section>
+        </section>
+
+        <footer class="footer">
+            <small>Tip: Download uses your browser “Save as PDF” in the print dialog.</small>
+        </footer>
+    </main>
+
+    <script src="costs.js"></script>
+</body>
+</html>

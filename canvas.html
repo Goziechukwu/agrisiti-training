@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canvas Builder — Business Model Canvas</title>
+    <link rel="stylesheet" href="canvas.css" />
+</head>
+
+<body>
+    <a class="skip-link" href="#app">Skip to canvas</a>
+
+    <main id="app" class="app" role="main">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-row">
+                    <img class="logo" src="logo-without.svg" alt="Agrisiti program logo" />
+                    <div>
+                        <span class="badge" aria-hidden="true">Days 6–7 • Lesson 7</span>
+                        <h1 class="title">Canvas Builder</h1>
+                        <p class="subtitle">Let’s fill in your Business Model Canvas using what you learned this week.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status">
+                <div class="pill">
+                    <span class="pill-label">Progress</span>
+                    <span class="pill-value" id="progressText">0/9</span>
+                </div>
+
+                <div class="actions-inline">
+                    <button id="startBtn" class="btn btn-primary" type="button">Start Building</button>
+                    <button id="downloadBtn" class="btn btn-secondary" type="button" disabled>Download PDF</button>
+                </div>
+            </div>
+        </header>
+
+        <p id="srLive" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+
+        <!-- Intro -->
+        <section id="screenIntro" class="card screen is-active" aria-labelledby="introHeading">
+            <h2 id="introHeading" class="card-title">Your Business Model Canvas (BMC)</h2>
+            <p class="help">
+                You will complete <strong>9 boxes</strong>. For each box, we’ll show a question and a helpful suggestion
+                (based on earlier activities, if available). You can accept it or edit it.
+            </p>
+
+            <ul class="bullets">
+                <li>Auto-saves as you go (you can return later).</li>
+                <li>When finished, you’ll name your business and unlock a badge.</li>
+                <li>Download as a printable PDF using your browser.</li>
+            </ul>
+
+            <div class="controls">
+                <button class="btn btn-primary" id="startBtn2" type="button">Start Building</button>
+                <button class="btn btn-ghost" id="loadBtn" type="button">Load Saved Canvas</button>
+                <button class="btn btn-ghost" id="resetAllBtn" type="button">Reset Canvas</button>
+            </div>
+        </section>
+
+        <!-- Canvas -->
+        <section id="screenCanvas" class="card screen" aria-labelledby="canvasHeading">
+            <div class="canvas-head">
+                <div>
+                    <h2 id="canvasHeading" class="card-title">Business Model Canvas</h2>
+                    <p class="help">
+                        Click any box to edit. (During guided build, we’ll highlight each box in order.)
+                    </p>
+                </div>
+
+                <div class="name-strip">
+                    <div class="name-item">
+                        <span class="name-label">Business name</span>
+                        <span class="name-value" id="bizNameTop">—</span>
+                    </div>
+                    <div class="name-item">
+                        <span class="name-label">Your name</span>
+                        <span class="name-value" id="userNameTop">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standard BMC layout -->
+            <div class="bmc" id="bmc">
+                <div class="box" data-box="partners">
+                    <div class="box-title">KEY PARTNERS</div>
+                    <div class="box-body" id="box_partners"></div>
+                </div>
+
+                <div class="box" data-box="activities">
+                    <div class="box-title">KEY ACTIVITIES</div>
+                    <div class="box-body" id="box_activities"></div>
+                </div>
+
+                <div class="box" data-box="resources">
+                    <div class="box-title">KEY RESOURCES</div>
+                    <div class="box-body" id="box_resources"></div>
+                </div>
+
+                <div class="box box-center" data-box="value">
+                    <div class="box-title">VALUE PROPOSITION</div>
+                    <div class="box-body" id="box_value"></div>
+                </div>
+
+                <div class="box" data-box="relationships">
+                    <div class="box-title">CUSTOMER RELATIONSHIPS</div>
+                    <div class="box-body" id="box_relationships"></div>
+                </div>
+
+                <div class="box" data-box="channels">
+                    <div class="box-title">CHANNELS</div>
+                    <div class="box-body" id="box_channels"></div>
+                </div>
+
+                <div class="box" data-box="segments">
+                    <div class="box-title">CUSTOMER SEGMENTS</div>
+                    <div class="box-body" id="box_segments"></div>
+                </div>
+
+                <div class="box box-bottom" data-box="costs">
+                    <div class="box-title">COST STRUCTURE</div>
+                    <div class="box-body" id="box_costs"></div>
+                </div>
+
+                <div class="box box-bottom" data-box="revenue">
+                    <div class="box-title">REVENUE STREAMS</div>
+                    <div class="box-body" id="box_revenue"></div>
+                </div>
+            </div>
+
+            <div class="footer-actions">
+                <button id="continueGuidedBtn" class="btn btn-primary" type="button">Continue Guided Build</button>
+                <button id="editModeBtn" class="btn btn-secondary" type="button">Edit Any Box</button>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true"></div>
+
+        <dialog id="modal" class="modal" aria-labelledby="modalTitle">
+            <form method="dialog" class="modal-inner">
+                <div class="modal-head">
+                    <h3 id="modalTitle" class="modal-title">Box</h3>
+                    <button class="icon-btn" id="closeModalBtn" value="cancel" aria-label="Close">✕</button>
+                </div>
+
+                <div class="modal-content">
+                    <p class="modal-q" id="modalQuestion"></p>
+
+                    <div class="suggest">
+                        <div class="suggest-title">Suggested answer</div>
+                        <div class="suggest-body" id="modalSuggestion"></div>
+                        <button id="useSuggestionBtn" class="btn btn-ghost" type="button">Use suggestion</button>
+                    </div>
+
+                    <div id="modalFieldWrap">
+                        <label class="field">
+                            <span class="field-label">Your answer</span>
+                            <textarea id="modalInput" class="field-input" rows="5"
+                                placeholder="Type your answer here..."></textarea>
+                            <span class="field-hint">Short bullet points are fine.</span>
+                        </label>
+                    </div>
+
+                    <!-- For checkbox-type boxes -->
+                    <div id="modalChecksWrap" class="checks" hidden>
+                        <!-- injected -->
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button id="saveBtn" class="btn btn-primary" value="default" type="button">Save</button>
+                    <button class="btn btn-secondary" value="cancel" type="button" id="cancelBtn">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
+        <!-- Name business modal -->
+        <dialog id="nameModal" class="modal" aria-labelledby="nameTitle">
+            <form method="dialog" class="modal-inner">
+                <div class="modal-head">
+                    <h3 id="nameTitle" class="modal-title">Name Your Business</h3>
+                    <button class="icon-btn" value="cancel" aria-label="Close">✕</button>
+                </div>
+
+                <div class="modal-content">
+                    <label class="field">
+                        <span class="field-label">Business name</span>
+                        <input id="bizNameInput" class="text-input" placeholder="e.g., GreenHarvest Rice" />
+                    </label>
+
+                    <label class="field">
+                        <span class="field-label">Your name</span>
+                        <input id="userNameInput" class="text-input" placeholder="e.g., Amina Yusuf" />
+                        <span class="field-hint">This will appear on your PDF.</span>
+                    </label>
+
+                    <div class="badge-row">
+                        <div class="badge-card" id="badgeCard" aria-live="polite">
+                            <div class="badge-icon">🏅</div>
+                            <div>
+                                <div class="badge-title">Badge</div>
+                                <div class="badge-text">Complete the canvas to unlock: <strong>I’m an Agripreneur!</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button id="finishBtn" class="btn btn-primary" type="button">Finish</button>
+                    <button class="btn btn-secondary" type="button" id="nameCancelBtn">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
+        <!-- Confetti canvas -->
+        <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+        <!-- Printable area (for PDF/print) -->
+        <section id="printArea" class="print-area" aria-hidden="true">
+            <div class="print-brand">
+                <h1 id="printBizName">Business Model Canvas</h1>
+                <div class="print-meta">
+                    <div><strong>Name:</strong> <span id="printUserName"></span></div>
+                    <div><strong>Date:</strong> <span id="printDate"></span></div>
+                    <div><strong>Program:</strong> Agrisiti Rice &amp; Aquaculture Program</div>
+                </div>
+            </div>
+
+            <div class="print-grid" id="printGrid"></div>
+        </section>
+
+        <footer class="footer">
+            <small>Download PDF uses your browser print dialog (Save as PDF). Works offline.</small>
+        </footer>
+    </main>
+
+    <script src="canvas.js"></script>
+</body>
+</html>

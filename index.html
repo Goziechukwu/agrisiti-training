@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Farmer or Agripreneur? — Click Quiz</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <a class="skip-link" href="#app">Skip to quiz</a>
+
+    <main id="app" class="app" role="main">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-row">
+                    <img class="logo" src="logo-without.svg" alt="Program logo" />
+                    <div>
+                        <span class="badge" aria-hidden="true">Day 1 • Lesson 1</span>
+                        <h1 class="title">Farmer or Agripreneur?</h1>
+                        <p class="subtitle">Click the best choice for each statement. You’ll get instant feedback.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status" aria-label="Quiz status">
+                <div class="progress-wrap" aria-label="Progress">
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+                        <span class="progress-fill" id="progressFill"></span>
+                    </div>
+                    <div class="progress-text" id="progressText">0/10</div>
+                </div>
+
+                <div class="score" aria-label="Score">
+                    <span class="score-label">Score</span>
+                    <span class="score-value" id="scoreValue">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Screen reader announcements -->
+        <p id="srLive" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+
+        <!-- INTRO SCREEN -->
+        <section id="screenIntro" class="card screen is-active" aria-labelledby="introHeading">
+            <h2 id="introHeading" class="card-title">Quick quiz (3–4 minutes)</h2>
+            <ul class="bullets">
+                <li>You will see 10 short statements.</li>
+                <li>Choose <strong>FARMER</strong> or <strong>AGRIPRENEUR</strong>.</li>
+                <li>After feedback, the next statement appears automatically.</li>
+            </ul>
+
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary" type="button">
+                    Start Quiz
+                </button>
+
+                <label class="toggle">
+                    <input id="soundToggle" type="checkbox" />
+                    <span>Sound</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- QUIZ SCREEN -->
+        <section id="screenQuiz" class="card screen" aria-labelledby="statementHeading">
+            <div class="statement-top">
+                <h2 id="statementHeading" class="card-title">Statement</h2>
+                <div class="pill" id="pillTimer" aria-hidden="true">Auto-next in 2s</div>
+            </div>
+
+            <p id="statementText" class="statement" tabindex="-1">
+                <!-- Injected -->
+            </p>
+
+            <div class="answer-row" role="group" aria-label="Answer choices">
+                <button id="btnFarmer" class="btn btn-choice" type="button" data-choice="FARMER">
+                    FARMER
+                </button>
+                <button id="btnAgripreneur" class="btn btn-choice" type="button" data-choice="AGRIPRENEUR">
+                    AGRIPRENEUR
+                </button>
+            </div>
+
+            <div id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true">
+                <div class="feedback-icon" id="feedbackIcon" aria-hidden="true"></div>
+                <div class="feedback-text">
+                    <div class="feedback-title" id="feedbackTitle"></div>
+                    <div class="feedback-explain" id="feedbackExplain"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS SCREEN -->
+        <section id="screenResults" class="card screen" aria-labelledby="resultsHeading">
+            <h2 id="resultsHeading" class="card-title">Your Results</h2>
+
+            <div class="results-box">
+                <div class="results-score">
+                    <span class="results-big" id="finalScore">0/10</span>
+                    <span class="results-small">Final Score</span>
+                </div>
+                <p class="results-message" id="resultsMessage"></p>
+            </div>
+
+            <div class="controls">
+                <button id="tryAgainBtn" class="btn btn-secondary" type="button">Try Again</button>
+
+                <!-- You can change this href to your actual next lesson page -->
+                <a id="continueLink" class="btn btn-primary" href="match.html" role="button">
+                    Continue to Next Quiz
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <small>Tip: Use Tab + Enter to play with keyboard. Works offline once loaded.</small>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
