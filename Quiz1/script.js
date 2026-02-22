@@ -4,68 +4,58 @@
     // =========================
     // Data (10 statements)
     // =========================
-const ITEMS = [
-    {
-        text: "Checks market prices before planting",
-        correct: "AGRIPRENEUR",
-        explain: "Agripreneurs research before they plant",
-        graphic: "chart"
-    },
-    {
-        text: "Plants the same crop every year without checking demand",
-        correct: "FARMER",
-        explain: "Agripreneurs check what customers want first",
-        graphic: "repeat"
-    },
-    {
-        text: "Writes down all expenses in a notebook",
-        correct: "AGRIPRENEUR",
-        explain: "Tracking costs is key to knowing your profit",
-        graphic: "notebook"
-    },
-    {
-        text: "Sells to whoever shows up at the farm",
-        correct: "FARMER",
-        explain: "Agripreneurs find customers before harvesting",
-        graphic: "shop"
-    },
-    {
-        text: "Calculates expected profit before starting",
-        correct: "AGRIPRENEUR",
-        explain: "Planning for profit is business thinking",
-        graphic: "calculator"
-    },
-    {
-        text: "Hopes for a good price at harvest time",
-        correct: "FARMER",
-        explain: "Agripreneurs know their price in advance",
-        graphic: "clock"
-    },
-    {
-        text: "Tries new methods to improve production",
-        correct: "AGRIPRENEUR",
-        explain: "Agripreneurs always learn and improve",
-        graphic: "lightbulb"
-    },
-    {
-        text: "Does farming the same way as parents did",
-        correct: "FARMER",
-        explain: "Learning new methods helps you grow",
-        graphic: "heritage"
-    },
-    {
-        text: "Has a list of customers ready before planting",
-        correct: "AGRIPRENEUR",
-        explain: "Know your buyers before you grow",
-        graphic: "checklist"
-    },
-    {
-        text: "Thinks of the farm as a business",
-        correct: "AGRIPRENEUR",
-        explain: "This is the agripreneur mindset!",
-        graphic: "briefcase"
-    }
-];
+    const ITEMS = [
+        {
+            text: "Checks market prices before planting",
+            correct: "AGRIPRENEUR",
+            explain: "Agripreneurs research before they plant"
+        },
+        {
+            text: "Plants the same crop every year without checking demand",
+            correct: "FARMER",
+            explain: "Agripreneurs check what customers want first"
+        },
+        {
+            text: "Writes down all expenses in a notebook",
+            correct: "AGRIPRENEUR",
+            explain: "Tracking costs is key to knowing your profit"
+        },
+        {
+            text: "Sells to whoever shows up at the farm",
+            correct: "FARMER",
+            explain: "Agripreneurs find customers before harvesting"
+        },
+        {
+            text: "Calculates expected profit before starting",
+            correct: "AGRIPRENEUR",
+            explain: "Planning for profit is business thinking"
+        },
+        {
+            text: "Hopes for a good price at harvest time",
+            correct: "FARMER",
+            explain: "Agripreneurs know their price in advance"
+        },
+        {
+            text: "Tries new methods to improve production",
+            correct: "AGRIPRENEUR",
+            explain: "Agripreneurs always learn and improve"
+        },
+        {
+            text: "Does farming the same way as parents did",
+            correct: "FARMER",
+            explain: "Learning new methods helps you grow"
+        },
+        {
+            text: "Has a list of customers ready before planting",
+            correct: "AGRIPRENEUR",
+            explain: "Know your buyers before you grow"
+        },
+        {
+            text: "Thinks of the farm as a business",
+            correct: "AGRIPRENEUR",
+            explain: "This is the agripreneur mindset!"
+        }
+    ];
 
     const RESULT_MESSAGES = [
         { min: 10, max: 10, msg: "Amazing! You already think like an agripreneur!" },
@@ -183,25 +173,6 @@ const ITEMS = [
         }
     }
 
-    const graphicContainer = document.getElementById("statementGraphic");
-
-    function renderGraphic(type) {
-        const icons = {
-            chart: "📈",
-            repeat: "🔁",
-            notebook: "📒",
-            shop: "🏪",
-            calculator: "🧮",
-            clock: "⏰",
-            lightbulb: "💡",
-            heritage: "🌾",
-            checklist: "📋",
-            briefcase: "💼"
-        };
-
-        graphicContainer.textContent = icons[type] || "🌱";
-    }
-
     // =========================
     // Quiz Logic
     // =========================
@@ -226,7 +197,6 @@ const ITEMS = [
 
         const item = ITEMS[index];
         statementText.textContent = item.text;
-        renderGraphic(item.graphic);
 
         // Move focus to the statement for accessibility
         statementText.focus();
