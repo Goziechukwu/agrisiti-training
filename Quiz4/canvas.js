@@ -79,18 +79,6 @@
         }
     ];
 
-    const BOX_ICONS = {
-        segments: "👥",
-        value: "💎",
-        channels: "🚚",
-        relationships: "📞",
-        revenue: "💰",
-        resources: "🧰",
-        activities: "🗓️",
-        partners: "🤝",
-        costs: "🧾"
-    };
-
     // -----------------------------
     // Elements
     // -----------------------------
@@ -113,7 +101,6 @@
     const modalBackdrop = document.getElementById("modalBackdrop");
     const modalTitle = document.getElementById("modalTitle");
     const modalQuestion = document.getElementById("modalQuestion");
-    const modalIcon = document.getElementById("modalIcon");
     const modalSuggestion = document.getElementById("modalSuggestion");
     const useSuggestionBtn = document.getElementById("useSuggestionBtn");
     const modalInput = document.getElementById("modalInput");
@@ -280,9 +267,6 @@
             const val = bmc.boxes[b.id];
             const body = boxBodyEl(b.id);
             const box = boxEl(b.id);
-            
-            const iconEl = box.querySelector(".box-icon");
-            if (iconEl) iconEl.textContent = BOX_ICONS[b.id] || "🧩";
 
             const text = formatBoxValue(val).trim();
             body.textContent = text || "Click to add…";
@@ -325,7 +309,6 @@
         if (!box) return;
 
         modalTitle.textContent = box.title;
-        if (modalIcon) modalIcon.textContent = BOX_ICONS[boxId] || "🧩";
         modalQuestion.textContent = box.question;
 
         const suggestion = suggestionFor(boxId);

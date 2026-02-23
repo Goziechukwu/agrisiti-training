@@ -187,39 +187,6 @@ body{
 }
 .box.filled .tag{ opacity:1; transform: scale(1); }
 
-/* Box icon */
-.box-icon{
-    width:44px;
-    height:44px;
-    border-radius:16px;
-    display:grid;
-    place-items:center;
-    margin-top:10px;
-
-    border:1px solid rgba(94,234,212,0.22);
-    background: rgba(94,234,212,0.10);
-    font-size: 1.35rem;
-}
-
-/* Modal icon + title row */
-.modal-title-row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.modal-icon{
-    width:44px;
-    height:44px;
-    border-radius:16px;
-    display:grid;
-    place-items:center;
-
-    border:1px solid rgba(94,234,212,0.22);
-    background: rgba(94,234,212,0.10);
-    font-size: 1.35rem;
-}
-
 .footer-actions{
     display:flex; flex-wrap:wrap; gap:12px; margin-top:14px;
 }

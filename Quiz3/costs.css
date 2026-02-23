@@ -190,46 +190,6 @@ body{
     background: rgba(255,255,255,0.03);
 }
 
-/* Big graphics on Rice/Fish choice buttons */
-.btn-choice{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-}
-
-.choice-graphic{
-    width:44px;
-    height:44px;
-    border-radius:16px;
-    display:grid;
-    place-items:center;
-    font-size:1.6rem;
-    border:1px solid rgba(94,234,212,0.25);
-    background: rgba(94,234,212,0.10);
-}
-
-/* Small icon on each cost card */
-.cost-top{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:12px;
-    margin-bottom:8px;
-}
-
-.cost-icon{
-    width:40px;
-    height:40px;
-    border-radius:14px;
-    display:grid;
-    place-items:center;
-    border:1px solid rgba(94,234,212,0.22);
-    background: rgba(94,234,212,0.08);
-    font-size:1.25rem;
-    flex:0 0 auto;
-}
-
 .choice-row{
     display:grid;
     gap:12px;

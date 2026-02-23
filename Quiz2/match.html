@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Match the Customer — Drag & Drop Game</title>
+    <link rel="stylesheet" href="match.css" />
+</head>
+
+<body>
+    <a class="skip-link" href="#app">Skip to game</a>
+
+    <main id="app" class="app" role="main">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-row">
+                    <img class="logo" src="logo-without.svg" alt="Program logo" />
+                    <div>
+                        <span class="badge" aria-hidden="true">Day 2 • Lesson 2</span>
+                        <h1 class="title">Match the Customer</h1>
+                        <p class="subtitle">Drag a “Need” card onto the right customer. Works on mobile & offline.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status">
+                <div class="mini">
+                    <span class="mini-label">Matches</span>
+                    <span class="mini-value" id="matchCount">0/4</span>
+                </div>
+
+                <label class="toggle">
+                    <input id="soundToggle" type="checkbox" />
+                    <span>Sound</span>
+                </label>
+            </div>
+        </header>
+
+        <p id="srLive" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+
+        <!-- INTRO -->
+        <section id="screenIntro" class="card screen is-active" aria-labelledby="introHeading">
+            <h2 id="introHeading" class="card-title">Choose a version</h2>
+            <p class="help">
+                You will match <strong>4 customer types</strong> with what each customer wants.
+                Drag each “Need” to the correct customer card.
+            </p>
+
+            <div class="choice-row" role="group" aria-label="Choose game version">
+                <button id="riceBtn" class="btn btn-primary" type="button">Rice Customers</button>
+                <button id="fishBtn" class="btn btn-secondary" type="button">Fish Customers</button>
+            </div>
+
+            <ul class="bullets">
+                <li>Correct match: cards lock + checkmark.</li>
+                <li>Wrong match: card gently shakes and returns.</li>
+                <li>Needs are shuffled each time.</li>
+            </ul>
+        </section>
+
+        <!-- GAME -->
+        <section id="screenGame" class="card screen" aria-labelledby="gameHeading">
+            <div class="game-head">
+                <h2 id="gameHeading" class="card-title">
+                    <span id="versionLabel">Rice Customers</span>
+                </h2>
+                <button id="resetBtn" class="btn btn-ghost" type="button">Restart</button>
+            </div>
+
+            <div class="board" aria-label="Matching board">
+                <!-- LEFT: Customers -->
+                <section class="panel" aria-label="Customer types">
+                    <h3 class="panel-title">Customers</h3>
+                    <div id="customerList" class="customer-list">
+                        <!-- injected -->
+                    </div>
+                </section>
+
+                <!-- RIGHT: Needs -->
+                <section class="panel" aria-label="Customer needs">
+                    <h3 class="panel-title">Needs (drag these)</h3>
+                    <div id="needTray" class="need-tray" aria-label="Needs tray">
+                        <!-- injected -->
+                    </div>
+                </section>
+            </div>
+
+            <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+        </section>
+
+        <!-- FINISH -->
+        <section id="screenDone" class="card screen" aria-labelledby="doneHeading">
+            <h2 id="doneHeading" class="card-title">Well done! 🎉</h2>
+            <p class="done-text" id="doneText">You matched all customers.</p>
+
+            <div class="done-actions">
+                <button id="otherVersionBtn" class="btn btn-secondary" type="button">
+                    Try the other version
+                </button>
+                <!-- Change this to your next quiz/page when ready -->
+                <a class="btn btn-primary" href="costs.html" role="button">
+                    Continue
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <small>Tip: You can drag with finger/mouse. Try again anytime.</small>
+        </footer>
+    </main>
+
+    <script src="match.js"></script>
+</body>
+</html>

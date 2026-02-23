@@ -8,35 +8,35 @@
         rice: {
             label: "Rice Farming Costs",
             items: [
-                { name: "Land preparation", value: 30000, icon: "🚜" },
-                { name: "Seeds", value: 15000, icon: "🌱" },
-                { name: "Fertilizer", value: 24000, icon: "🧪" },
-                { name: "Herbicides/Pesticides", value: 12000, icon: "🧴" },
-                { name: "Labor - Planting", value: 20000, icon: "👩🏾‍🌾" },
-                { name: "Labor - Weeding", value: 30000, icon: "🧹" },
-                { name: "Labor - Harvesting", value: 25000, icon: "🧺" },
-                { name: "Threshing", value: 15000, icon: "⚙️" },
-                { name: "Drying", value: 10000, icon: "☀️" },
-                { name: "Transport", value: 12000, icon: "🚚" },
-                { name: "Bags/Packaging", value: 6000, icon: "📦" },
-                { name: "Phone calls/Marketing", value: 3000, icon: "📞" }
+                { name: "Land preparation", value: 30000 },
+                { name: "Seeds", value: 15000 },
+                { name: "Fertilizer", value: 24000 },
+                { name: "Herbicides/Pesticides", value: 12000 },
+                { name: "Labor - Planting", value: 20000 },
+                { name: "Labor - Weeding", value: 30000 },
+                { name: "Labor - Harvesting", value: 25000 },
+                { name: "Threshing", value: 15000 },
+                { name: "Drying", value: 10000 },
+                { name: "Transport", value: 12000 },
+                { name: "Bags/Packaging", value: 6000 },
+                { name: "Phone calls/Marketing", value: 3000 }
             ]
         },
         fish: {
             label: "Fish Farming Costs",
             items: [
-                { name: "Pond construction/renovation", value: 50000, icon: "🏗️" },
-                { name: "Pond preparation", value: 15000, icon: "🧹" },
-                { name: "Fingerlings (500 pieces)", value: 25000, icon: "🐟" },
-                { name: "Feed - Starter (Month 1)", value: 40000, icon: "🥣" },
-                { name: "Feed - Grower (Months 2-3)", value: 80000, icon: "🧺" },
-                { name: "Feed - Finisher (Month 4)", value: 60000, icon: "🍽️" },
-                { name: "Medicine/Treatment", value: 8000, icon: "💊" },
-                { name: "Water pump/Electricity", value: 15000, icon: "⚡" },
-                { name: "Labor - Feeding", value: 20000, icon: "👨🏾‍🌾" },
-                { name: "Labor - Harvesting", value: 15000, icon: "🧾" },
-                { name: "Transport", value: 10000, icon: "🚚" },
-                { name: "Phone calls/Marketing", value: 3000, icon: "📞" }
+                { name: "Pond construction/renovation", value: 50000 },
+                { name: "Pond preparation", value: 15000 },
+                { name: "Fingerlings (500 pieces)", value: 25000 },
+                { name: "Feed - Starter (Month 1)", value: 40000 },
+                { name: "Feed - Grower (Months 2-3)", value: 80000 },
+                { name: "Feed - Finisher (Month 4)", value: 60000 },
+                { name: "Medicine/Treatment", value: 8000 },
+                { name: "Water pump/Electricity", value: 15000 },
+                { name: "Labor - Feeding", value: 20000 },
+                { name: "Labor - Harvesting", value: 15000 },
+                { name: "Transport", value: 10000 },
+                { name: "Phone calls/Marketing", value: 3000 }
             ]
         }
     };
@@ -165,14 +165,8 @@
         costGrid.innerHTML = COSTS[mode].items.map((it, idx) => `
             <div class="cost-card" role="button" tabindex="0" data-index="${idx}" aria-pressed="false">
                 <div class="check" aria-hidden="true">✓</div>
-
-                <div class="cost-top">
-                    <div class="cost-icon" aria-hidden="true">${it.icon || "💰"}</div>
-                    <div>
-                        <div class="cost-name">${it.name}</div>
-                        <div class="cost-amt">${formatNaira(it.value)}</div>
-                    </div>
-                </div>
+                <div class="cost-name">${it.name}</div>
+                <div class="cost-amt">${formatNaira(it.value)}</div>
             </div>
         `).join("");
 
